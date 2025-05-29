@@ -2,7 +2,7 @@
 /**
  * Arquivo: Log.php
  * Pasta: app/models/
- * Descrição: Modelo responsável por buscar registros da tabela de logs.
+ * Descrição: Modelo para registro de ações no sistema
  */
 
 class Log {
@@ -13,8 +13,9 @@ class Log {
         $this->conn = $conn;
     }
 
-    public function listarTodos() {
-        $resultado = $this->conn->query("SELECT * FROM logs ORDER BY data_hora DESC");
-        return $resultado->fetch_all(MYSQLI_ASSOC);
+    public function registrar($dados) {
+        $stmt = $this->conn->prepare("INSERT INTO logs (usuario, acao, tabela_afetada, registro_id) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("sssi", $dados['usuario'], $dados['acao'], $dados['tabela'], $dados['registro_id']);
+        return $stmt->execute();
     }
 }

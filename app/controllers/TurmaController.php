@@ -8,8 +8,6 @@
 
 require_once '../app/helpers/auth.php';
 require_once '../app/helpers/log.php';
-registrarLog('Criou nova turma', 'Turma/salvar');
-
 
 class TurmaController extends Controller {
 
@@ -41,6 +39,8 @@ class TurmaController extends Controller {
 
         $modelo = $this->model('Turma');
         $modelo->salvar($dados);
+
+        registrarLog('Criou turma para curso ID: ' . $dados['curso_id'], 'Turma/salvar');
 
         header('Location: /ama/public/?url=Turma/index/' . $dados['curso_id']);
     }

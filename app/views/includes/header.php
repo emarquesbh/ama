@@ -1,4 +1,3 @@
-
 // Aqui começa código 6: app/views/includes/header.php
 // Pasta: app/views/includes/
 
@@ -14,7 +13,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-    <a class="navbar-brand" href="#">Clube AMA</a>
+    <a class="navbar-brand" href="?url=Home/index">Clube AMA</a>
   </div>
 </nav>
 

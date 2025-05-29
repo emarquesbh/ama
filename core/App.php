@@ -1,6 +1,3 @@
-// Aqui começa código 2: core/App.php
-// Pasta: core/
-
 <?php
 /**
  * Arquivo: App.php
@@ -9,7 +6,7 @@
  */
 
 class App {
-    protected $controller = 'HomeController';
+    protected $controller = 'LoginController';
     protected $method = 'index';
     protected $params = [];
 
@@ -42,3 +39,4 @@ class App {
 }
 
 // Aqui termina código 2
+

@@ -24,11 +24,25 @@ class CursoController extends Controller {
         $this->view('curso/criar');
     }
 
-    public function salvar() {
-        exigirLogin();
-        exigirTipo(['admin', 'root']);
+   public function salvar() {
+    exigirLogin();
+    exigirTipo(['admin', 'root']);
 
-        // Lógica de salvamento futura: validará $_POST e salvará no banco
-        echo "<div class='alert alert-success'>Curso salvo (exemplo de retorno).</div>";
-    }
+    $dados = [
+        'nome' => $_POST['nome'],
+        'descricao' => $_POST['descricao'],
+        'dia' => $_POST['dia'],
+        'horario' => $_POST['horario'],
+        'usuario' => $_SESSION['usuario']
+    ];
+
+    $modelo = $this->model('Curso');
+    $modelo->salvar($dados);
+
+    require_once '../app/helpers/log.php';
+    registrarLog('Criou curso: ' . $dados['nome'], 'Curso/salvar');
+
+    header('Location: /ama/public/?url=Curso/index');
+}
+
 }

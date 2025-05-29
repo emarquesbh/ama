@@ -1,0 +1,19 @@
+# Ignora arquivos e pastas comuns que não devem ir para o repositório
+
+/vendor/
+/node_modules/
+/.env
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários e de log
+*.log
+*.bak
+*.tmp
+
+# Configurações de IDE
+.vscode/
+.idea/
+
+# Arquivos sensíveis de configuração
+/app/config/conexao.php
