@@ -1,7 +1,4 @@
 
-// Aqui começa código 3: core/Controller.php
-// Pasta: core/
-
 <?php
 /**
  * Arquivo: Controller.php
@@ -20,4 +17,3 @@ class Controller {
     }
 }
 
-// Aqui termina código 3

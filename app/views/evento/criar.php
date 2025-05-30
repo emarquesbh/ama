@@ -1,10 +1,4 @@
-<?php
-/**
- * Arquivo: criar.php
- * Pasta: app/views/evento/
- * Descrição: Formulário de criação de evento
- */
-?>
+
 
 <?php include '../app/views/includes/admin-layout.php'; ?>
 
@@ -18,12 +12,7 @@
 
   <div class="mb-3">
     <label class="form-label">Descrição</label>
-    <textarea name="descricao" class="form-control" rows="4" required></textarea>
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">Local</label>
-    <input type="text" name="local" class="form-control" required>
+    <textarea name="descricao" class="form-control editor" required></textarea>
   </div>
 
   <div class="mb-3">
@@ -33,12 +22,17 @@
 
   <div class="mb-3">
     <label class="form-label">Horário</label>
-    <input type="text" name="horario" class="form-control" required>
+    <input type="time" name="horario" class="form-control" required>
   </div>
 
-  <div class="form-check mb-3">
-    <input class="form-check-input" type="checkbox" name="destaque" id="destaque">
-    <label class="form-check-label" for="destaque">Destacar evento</label>
+  <div class="mb-3">
+    <label class="form-label">Local</label>
+    <input type="text" name="local" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Imagem</label>
+    <input type="file" name="imagem" class="form-control">
   </div>
 
   <div class="mb-3">
@@ -49,14 +43,13 @@
     </select>
   </div>
 
-  <p class="mt-4 fw-bold">Imagens</p>
-  <div class="mb-2"><input type="file" name="imagem_menor"> (miniatura)</div>
-  <div class="mb-2"><input type="file" name="imagem_maior"> (imagem principal)</div>
-  <div class="mb-2"><input type="file" name="imagem01"> (galeria 1)</div>
-  <div class="mb-2"><input type="file" name="imagem02"> (galeria 2)</div>
-  <div class="mb-2"><input type="file" name="imagem03"> (galeria 3)</div>
+  <div class="form-check mb-3">
+    <input class="form-check-input" type="checkbox" name="destaque" id="destaque">
+    <label class="form-check-label" for="destaque">Destaque este evento</label>
+  </div>
 
-  <button type="submit" class="btn btn-success mt-4">Salvar Evento</button>
+  <button type="submit" class="btn btn-success">Salvar Evento</button>
 </form>
 
 <?php include '../app/views/includes/admin-layout-fechamento.php'; ?>
+

@@ -38,5 +38,4 @@ class App {
     }
 }
 
-// Aqui termina código 2
 

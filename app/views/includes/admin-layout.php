@@ -1,6 +1,3 @@
-// Aqui começa arquivo 01: admin-layout.php
-// Local: app/views/includes/
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -26,5 +23,4 @@
 
       <div class="container-fluid mt-4">
 
-// Aqui termina arquivo 01
 

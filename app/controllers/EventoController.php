@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Arquivo: EventoController.php
@@ -5,54 +6,22 @@
  * Descrição: Controlador para gerenciamento de eventos
  */
 
-require_once '../app/helpers/auth.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../helpers/auth.php';
+require_once __DIR__ . '/../helpers/logs.php';
 
-class EventoController extends Controller {
-    public function index() {
-        exigirLogin();
-        $eventoModel = $this->model('Evento');
-        $dados['eventos'] = $eventoModel->listarTodos();
-        $this->view('evento/index', $dados);
+class EventoController {
+  public function index() {
+    exigirLogin();
+
+    $conn = conn();
+    $result = $conn->query("SELECT * FROM eventos ORDER BY data_evento DESC");
+
+    $eventos = [];
+    while ($row = $result->fetch_assoc()) {
+      $eventos[] = $row;
     }
 
-    public function criar() {
-        exigirTipo(['admin', 'root']);
-
-        $eventoModel = $this->model('Evento');
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $dados = [
-                'titulo' => $_POST['titulo'] ?? '',
-                'descricao' => $_POST['descricao'] ?? '',
-                'local' => $_POST['local'] ?? '',
-                'data_evento' => $_POST['data_evento'] ?? '',
-                'horario' => $_POST['horario'] ?? '',
-                'destaque' => isset($_POST['destaque']) ? 1 : 0,
-                'status' => $_POST['status'] ?? 'ativo',
-                'imagem_menor' => '', 'imagem_maior' => '',
-                'imagem01' => '', 'imagem02' => '', 'imagem03' => '',
-                'usuario' => $_SESSION['usuario']
-            ];
-
-            // Tratamento de upload (fictício por enquanto)
-            // Imagens devem ser tratadas com GD futuramente
-
-            $eventoModel->inserir($dados);
-
-            require_once '../app/models/Log.php';
-
-            $logModel = new Log();
-            $logModel->registrar([
-            'usuario' => $_SESSION['usuario'],
-            'acao' => 'criar',
-            'tabela' => 'eventos',
-            'registro_id' => $this->conn->insert_id
-]);
-
-            header('Location: /ama/public/?url=Evento/index');
-            exit;
-        }
-
-        $this->view('evento/criar');
-    }
+    require_once '../app/views/evento/index.php';
+  }
 }

@@ -1,10 +1,4 @@
-<?php
-/**
- * Arquivo: criar.php
- * Pasta: app/views/aviso/
- * Descrição: Formulário de criação de aviso
- */
-?>
+
 
 <?php include '../app/views/includes/admin-layout.php'; ?>
 
@@ -18,7 +12,7 @@
 
   <div class="mb-3">
     <label class="form-label">Descrição</label>
-    <textarea name="descricao" class="form-control" rows="4" required></textarea>
+    <textarea name="descricao" class="form-control editor" rows="4" required></textarea>
   </div>
 
   <div class="mb-3">
@@ -48,3 +42,4 @@
 </form>
 
 <?php include '../app/views/includes/admin-layout-fechamento.php'; ?>
+

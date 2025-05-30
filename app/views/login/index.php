@@ -1,6 +1,4 @@
-
-// Aqui começa código 5: app/views/login/index.php
-// Pasta: app/views/login/
+/
 
 <?php include '../app/views/includes/header.php'; ?>
 
@@ -26,4 +24,3 @@
 
 <?php include '../app/views/includes/footer.php'; ?>
 
-// Aqui termina código 5

@@ -1,19 +1,27 @@
+
 <?php
 /**
  * Arquivo: LogsController.php
  * Pasta: app/controllers/
- * Descrição: Controlador para exibir logs de ações realizadas no sistema
+ * Descrição: Controlador para exibição dos logs do sistema
  */
 
-require_once '../app/helpers/auth.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../helpers/auth.php';
 
-class LogsController extends Controller {
-    public function index() {
-        exigirTipo(['admin', 'root']);
+class LogsController {
+  public function index() {
+    exigirTipo(['admin', 'root']);
 
-        $logModel = $this->model('Log');
-        $dados['logs'] = $logModel->listarTodos();
-        $this->view('log/index', $dados);
+    $conn = conn();
+    $result = $conn->query("SELECT * FROM logs ORDER BY data_criacao DESC LIMIT 100");
+
+    $logs = [];
+    while ($row = $result->fetch_assoc()) {
+      $logs[] = $row;
     }
+
+    require_once '../app/views/logs/index.php';
+  }
 }
 

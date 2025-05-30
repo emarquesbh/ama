@@ -1,48 +1,50 @@
+
 <?php
 /**
  * Arquivo: CursoController.php
  * Pasta: app/controllers/
- * Descrição: Controlador responsável pela área de cursos (parte administrativa).
- * Acesso restrito a usuários do tipo 'admin' e 'root'.
+ * Descrição: Controlador para gerenciamento de cursos
  */
 
-require_once '../app/helpers/auth.php';
-require_once '../app/helpers/log.php';
-registrarLog('Criou novo curso', 'Curso/salvar');
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../helpers/auth.php';
+require_once __DIR__ . '/../helpers/logs.php';
 
-class CursoController extends Controller {
-
-    public function index() {
-        exigirLogin();
-        exigirTipo(['admin', 'root']);
-        $this->view('curso/index');
-    }
-
-    public function criar() {
-        exigirLogin();
-        exigirTipo(['admin', 'root']);
-        $this->view('curso/criar');
-    }
-
-   public function salvar() {
+class CursoController {
+  public function index() {
     exigirLogin();
-    exigirTipo(['admin', 'root']);
 
-    $dados = [
-        'nome' => $_POST['nome'],
-        'descricao' => $_POST['descricao'],
-        'dia' => $_POST['dia'],
-        'horario' => $_POST['horario'],
-        'usuario' => $_SESSION['usuario']
-    ];
+    $conn = conn();
+    $result = $conn->query("SELECT * FROM cursos ORDER BY nome ASC");
 
-    $modelo = $this->model('Curso');
-    $modelo->salvar($dados);
+    $cursos = [];
+    while ($row = $result->fetch_assoc()) {
+      $cursos[] = $row;
+    }
 
-    require_once '../app/helpers/log.php';
-    registrarLog('Criou curso: ' . $dados['nome'], 'Curso/salvar');
+    require_once '../app/views/curso/index.php';
+  }
 
-    header('Location: /ama/public/?url=Curso/index');
+  public function criar() {
+    exigirTipo(['admin', 'comum']);
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $conn = conn();
+
+      $nome = $_POST['nome'];
+      $descricao = $_POST['descricao'];
+
+      $stmt = $conn->prepare("INSERT INTO cursos (nome, descricao, usuario_alteracao) VALUES (?, ?, ?)");
+      $stmt->bind_param("sss", $nome, $descricao, $_SESSION['usuario']['login']);
+      $stmt->execute();
+
+      registrarLog("Criou novo curso: {$nome}");
+
+      header('Location: ?url=Curso/index');
+      exit;
+    }
+
+    require_once '../app/views/curso/criar.php';
+  }
 }
 
-}

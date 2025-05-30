@@ -1,10 +1,4 @@
-<?php
-/**
- * Arquivo: criar.php
- * Pasta: app/views/viagem/
- * Descrição: Formulário de criação de viagem
- */
-?>
+
 
 <?php include '../app/views/includes/admin-layout.php'; ?>
 
@@ -48,3 +42,4 @@
 </form>
 
 <?php include '../app/views/includes/admin-layout-fechamento.php'; ?>
+

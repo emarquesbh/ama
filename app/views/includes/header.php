@@ -1,5 +1,3 @@
-// Aqui começa código 6: app/views/includes/header.php
-// Pasta: app/views/includes/
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -17,4 +15,3 @@
   </div>
 </nav>
 
-// Aqui termina código 6

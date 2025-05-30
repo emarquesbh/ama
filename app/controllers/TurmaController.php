@@ -1,47 +1,52 @@
+
 <?php
 /**
  * Arquivo: TurmaController.php
  * Pasta: app/controllers/
- * Descrição: Controlador responsável pela gestão de turmas vinculadas aos cursos.
- * Acesso restrito a usuários do tipo 'admin' e 'root'.
+ * Descrição: Controlador para gerenciamento de turmas
  */
 
-require_once '../app/helpers/auth.php';
-require_once '../app/helpers/log.php';
+require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../helpers/auth.php';
+require_once __DIR__ . '/../helpers/logs.php';
 
-class TurmaController extends Controller {
+class TurmaController {
+  public function index() {
+    exigirLogin();
 
-    public function index($curso_id = null) {
-        exigirLogin();
-        exigirTipo(['admin', 'root']);
+    $conn = conn();
+    $result = $conn->query("SELECT * FROM turmas ORDER BY id DESC");
 
-        $this->view('turma/index', ['curso_id' => $curso_id]);
+    $turmas = [];
+    while ($row = $result->fetch_assoc()) {
+      $turmas[] = $row;
     }
 
-    public function criar($curso_id) {
-        exigirLogin();
-        exigirTipo(['admin', 'root']);
+    require_once '../app/views/turma/index.php';
+  }
 
-        $this->view('turma/criar', ['curso_id' => $curso_id]);
+  public function criar() {
+    exigirTipo(['admin', 'comum']);
+
+    $conn = conn();
+    $cursos = $conn->query("SELECT * FROM cursos ORDER BY nome ASC");
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $curso_id = $_POST['curso_id'];
+      $dia = $_POST['dia'];
+      $horario = $_POST['horario'];
+      $status = $_POST['status'];
+
+      $stmt = $conn->prepare("INSERT INTO turmas (curso_id, dia, horario, status, usuario_alteracao) VALUES (?, ?, ?, ?, ?)");
+      $stmt->bind_param("issss", $curso_id, $dia, $horario, $status, $_SESSION['usuario']['login']);
+      $stmt->execute();
+
+      registrarLog("Criou nova turma para curso ID {$curso_id}");
+
+      header('Location: ?url=Turma/index');
+      exit;
     }
 
-    public function salvar() {
-        exigirLogin();
-        exigirTipo(['admin', 'root']);
-
-        $dados = [
-            'curso_id' => $_POST['curso_id'],
-            'dia' => $_POST['dia'],
-            'horario' => $_POST['horario'],
-            'status' => $_POST['status'],
-            'usuario' => $_SESSION['usuario']
-        ];
-
-        $modelo = $this->model('Turma');
-        $modelo->salvar($dados);
-
-        registrarLog('Criou turma para curso ID: ' . $dados['curso_id'], 'Turma/salvar');
-
-        header('Location: /ama/public/?url=Turma/index/' . $dados['curso_id']);
-    }
+    require_once '../app/views/turma/criar.php';
+  }
 }

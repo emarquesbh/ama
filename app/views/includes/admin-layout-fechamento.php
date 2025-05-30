@@ -1,10 +1,19 @@
-      </div> <!-- fecha container-fluid -->
-    </div> <!-- fecha page-content-wrapper -->
-  </div> <!-- fecha wrapper -->
-
+<?php
+/**
+ * Arquivo: admin-layout-fechamento.php
+ * Pasta: app/views/includes/
+ * Descrição: Fechamento do layout base administrativo
+ */
+?>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    document.getElementById("menu-toggle").addEventListener("click", function() {
-      document.getElementById("wrapper").classList.toggle("toggled");
+    tinymce.init({
+      selector: 'textarea.editor',
+      plugins: 'link lists',
+      toolbar: 'undo redo | bold italic underline | bullist numlist | link',
+      menubar: false,
+      height: 250
     });
   </script>
 </body>
