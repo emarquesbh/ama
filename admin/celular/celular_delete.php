@@ -1,0 +1,18 @@
+
+
+### INÍCIO DO ARQUIVO: celular_delete.php
+<?php
+// admin/celular/celular_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM celular WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_celular.php");
+exit;
+### FIM DO ARQUIVO: celular_delete.php

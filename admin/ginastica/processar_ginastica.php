@@ -1,71 +1,32 @@
+### INÍCIO DO ARQUIVO: processar_ginastica.php
 <?php
-// processar_ginastica.php
-// Processa inserção ou atualização de aula de Ginástica
-// Upload da imagem principal com GD (gera versão padrão)
-// Campos: imagem, título, horários, dia, valor, turma, descrição
-// Testado no XAMPP
+// admin/ginastica/processar_ginastica.php
 
-include_once("includes/_header.php");
-include_once("includes/_menu.php");
-// Conexão com o banco
-$mysqli = new mysqli("localhost", "root", "", "ama");
-if ($mysqli->connect_error) {
-    die("Erro de conexão: " . $mysqli->connect_error);
-}
+include_once("../includes/conexao.php");
 
-// Função para tratar upload da imagem
-function uploadImagem($inputName, $pastaDestino) {
-    if (isset($_FILES[$inputName]) && $_FILES[$inputName]['error'] == 0) {
-        $ext = pathinfo($_FILES[$inputName]['name'], PATHINFO_EXTENSION);
-        $nomeArquivo = uniqid() . "." . $ext;
-        move_uploaded_file($_FILES[$inputName]['tmp_name'], $pastaDestino . $nomeArquivo);
-        return $nomeArquivo;
-    }
-    return null;
-}
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $acao = $_POST["acao"] ?? '';
+    $id = intval($_POST["id"] ?? 0);
+    $titulo = trim($_POST["titulo"] ?? '');
+    $data = $_POST["data"] ?? '';
+    $dias = $_POST["dias"] ?? '';
+    $horarios = $_POST["horarios"] ?? '';
+    $mensalidade = $_POST["mensalidade"] ?? '';
+    $descricao = $_POST["descricao"] ?? '';
 
-// Campos do formulário
-$titulo    = $_POST['titulo'];
-$horarios  = $_POST['horarios'];
-$dia       = $_POST['dia'];
-$valor     = str_replace(",", ".", $_POST['valor']);
-$turma     = $_POST['turma'];
-$descricao = $_POST['descricao'];
-
-// Pasta para upload
-$pastaUpload = "../uploads/ginastica/";
-
-// Verifica se é atualização (tem ID) ou novo cadastro
-if (isset($_GET['id'])) {
-    // Atualização
-    $id = (int) $_GET['id'];
-
-    // Se veio nova imagem, processa
-    $imagem = uploadImagem('imagem', $pastaUpload);
-
-    if ($imagem) {
-        // Atualiza com nova imagem
-        $stmt = $mysqli->prepare("UPDATE ginastica SET imagem=?, titulo=?, horarios=?, dia=?, valor=?, turma=?, descricao=? WHERE id=?");
-        $stmt->bind_param("sssssdsi", $imagem, $titulo, $horarios, $dia, $valor, $turma, $descricao, $id);
-    } else {
-        // Atualiza sem mexer na imagem
-        $stmt = $mysqli->prepare("UPDATE ginastica SET titulo=?, horarios=?, dia=?, valor=?, turma=?, descricao=? WHERE id=?");
-        $stmt->bind_param("ssssdsi", $titulo, $horarios, $dia, $valor, $turma, $descricao, $id);
+    if ($acao === "inserir") {
+        $stmt = $mysqli->prepare("INSERT INTO ginastica (titulo, data, dias, horarios, mensalidade, descricao) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssss", $titulo, $data, $dias, $horarios, $mensalidade, $descricao);
+        $stmt->execute();
+    } elseif ($acao === "editar" && $id > 0) {
+        $stmt = $mysqli->prepare("UPDATE ginastica SET titulo = ?, data = ?, dias = ?, horarios = ?, mensalidade = ?, descricao = ? WHERE id = ?");
+        $stmt->bind_param("ssssssi", $titulo, $data, $dias, $horarios, $mensalidade, $descricao, $id);
+        $stmt->execute();
     }
 
-    $stmt->execute();
-    $stmt->close();
-} else {
-    // Novo cadastro
-    $imagem = uploadImagem('imagem', $pastaUpload);
-
-    $stmt = $mysqli->prepare("INSERT INTO ginastica (imagem, titulo, horarios, dia, valor, turma, descricao) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssdsd", $imagem, $titulo, $horarios, $dia, $valor, $turma, $descricao);
-    $stmt->execute();
-    $stmt->close();
+    header("Location: listar_ginastica.php");
+    exit;
 }
 
-// Redirecionar para listagem
-header("Location: listar_ginastica.php");
-exit;
-?>
+### FIM DO ARQUIVO: processar_ginastica.php
+

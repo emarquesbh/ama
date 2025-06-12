@@ -4,9 +4,10 @@
 // Campos padrão das 10 perguntas (imagem, título, horários, dia, valor, turma, descrição, log)
 // Testado no XAMPP
 
+include_once("../verifica_login.php"); // Ajuste o caminho conforme necessário
 include_once("../includes/_header.php");
 include_once("../includes/_menu.php");
-include_once("../includes/_conexao.php");
+include_once("../includes/conexao.php");
 ?>
 <div class="container">
     <h1 class="mb-4">Cadastrar Aula de Informática</h1>

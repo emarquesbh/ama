@@ -172,3 +172,74 @@ CREATE TABLE informatica (
     atualizado_em DATETIME
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+CREATE TABLE grupo_reflexao (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    data DATE NOT NULL,
+    palavra_padre TINYINT(1) DEFAULT 0,
+    atualizado_por VARCHAR(100),
+    atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE vida_ativa (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    data DATE NOT NULL,
+    atualizado_por VARCHAR(100),
+    atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE bonecando (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    data DATE NOT NULL,
+    atualizado_por VARCHAR(100),
+    atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE coral (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    data DATE NOT NULL,
+    atualizado_por VARCHAR(100),
+    atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE ginastica_cerebral (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    data DATE NOT NULL,
+    atualizado_por VARCHAR(100),
+    atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Tabela: danca_senior
+CREATE TABLE danca_senior (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    data DATE NOT NULL,
+    atualizado_por VARCHAR(100),
+    atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP
+                     ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Tabela: lian_gong
+CREATE TABLE lian_gong (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    data DATE NOT NULL,
+    atualizado_por VARCHAR(100),
+    atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP
+                     ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Tabela: programacao
+CREATE TABLE programacao (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    data DATE NOT NULL,
+    atualizado_por VARCHAR(100),
+    atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP
+                     ON UPDATE CURRENT_TIMESTAMP
+);

@@ -1,21 +1,14 @@
 <?php
-// excluir_danca_salao.php
-// Excluir aula de Dança de Salão
-// Recebe ID por GET e exclui do banco
-// Após exclusão, redireciona para listar_danca_salao.php
-// Testado no XAMPP
+// admin/danca_salao/danca_salao_delete.php
 
-include_once("includes/_header.php");
-include_once("includes/_menu.php");
-include_once("../includes/_conexao.php");
+include_once("../includes/conexao.php");
 
-// Obter ID
-$id = (int) $_GET['id'];
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM danca_salao WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
 
-// Excluir registro
-$mysqli->query("DELETE FROM danca_salao WHERE id = $id");
-
-// Redirecionar
 header("Location: listar_danca_salao.php");
 exit;
-?>

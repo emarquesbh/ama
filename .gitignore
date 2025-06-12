@@ -1,3 +1,35 @@
+# Ignorar arquivos de sistema e IDEs
+.DS_Store
+Thumbs.db
+*.log
+*.bak
+*.tmp
+*.swp
+
+# Ignorar pastas e arquivos de uploads
 /uploads/
 /backup/
+
+# Ignorar arquivos do XAMPP/servidores locais
+*.db
 *.sql
+*.sqlite
+*.sqlite3
+
+# Ignorar pastas temporárias do PHP ou cache
+/cache/
+*.cache
+*.session
+
+# Ignorar configurações locais do VS Code
+.vscode/
+
+# Ignorar diretórios de testes, se existirem
+/tests/
+node_modules/
+
+# Arquivos sensíveis ou locais
+.env
+.env.local
+config.php
+

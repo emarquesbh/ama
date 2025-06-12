@@ -8,9 +8,8 @@
 
 include_once("../includes/_header.php");
 include_once("../includes/_menu.php");
+include_once("../includes/conexao.php");
 
-// Conexão com o banco
-$mysqli = new mysqli("localhost", "root", "", "ama");
 if ($mysqli->connect_error) {
     die("Erro de conexão: " . $mysqli->connect_error);
 }

@@ -6,7 +6,7 @@
 
 include_once("../includes/_header.php");
 include_once("../includes/_menu.php");
-include_once("../includes/_conexao.php");
+include_once("../includes/conexao.php");
 ?>
 <div class="container">
     <h1 class="mb-4">Cadastrar Aula de Dança de Salão</h1>

@@ -1,70 +1,28 @@
 <?php
-// processar_celular.php
-// Processa inserção ou atualização de aula de Celular
-// Upload da imagem principal
-// Inclui campos de log: atualizado_por, atualizado_em
-// Testado no XAMPP
+// admin/celular/processar_celular.php
 
-include_once("includes/_header.php");
-include_once("includes/_menu.php");
+include_once("../includes/conexao.php");
 
-include_once("../includes/_conexao.php");
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $acao = $_POST["acao"] ?? '';
+    $id = intval($_POST["id"] ?? 0);
+    $titulo = trim($_POST["titulo"] ?? '');
+    $data = $_POST["data"] ?? '';
+    $dias = $_POST["dias"] ?? '';
+    $horarios = $_POST["horarios"] ?? '';
+    $mensalidade = $_POST["mensalidade"] ?? '';
+    $descricao = $_POST["descricao"] ?? '';
 
-// Função para tratar upload da imagem
-function uploadImagem($inputName, $pastaDestino) {
-    if (isset($_FILES[$inputName]) && $_FILES[$inputName]['error'] == 0) {
-        $ext = pathinfo($_FILES[$inputName]['name'], PATHINFO_EXTENSION);
-        $nomeArquivo = uniqid() . "." . $ext;
-        move_uploaded_file($_FILES[$inputName]['tmp_name'], $pastaDestino . $nomeArquivo);
-        return $nomeArquivo;
-    }
-    return null;
-}
-
-// Campos do formulário
-$titulo    = $_POST['titulo'];
-$horarios  = $_POST['horarios'];
-$dia       = $_POST['dia'];
-$valor     = str_replace(",", ".", $_POST['valor']);
-$turma     = $_POST['turma'];
-$descricao = $_POST['descricao'];
-
-// Campos de log
-$atualizado_por = 'admin'; // ou $_SESSION['usuario_nome']
-$atualizado_em  = date('Y-m-d H:i:s');
-
-// Pasta para upload
-$pastaUpload = "../uploads/celular/";
-
-// Processar imagem
-$imagem = uploadImagem('imagem', $pastaUpload);
-
-// Verifica se é atualização (tem ID) ou novo cadastro
-if (isset($_GET['id'])) {
-    // Atualização
-    $id = (int) $_GET['id'];
-
-    // Monta SQL dinamicamente (se enviar nova imagem)
-    if ($imagem) {
-        $stmt = $mysqli->prepare("UPDATE celular SET imagem=?, titulo=?, horarios=?, dia=?, valor=?, turma=?, descricao=?, atualizado_por=?, atualizado_em=? WHERE id=?");
-        $stmt->bind_param("sssssdsssi", $imagem, $titulo, $horarios, $dia, $valor, $turma, $descricao, $atualizado_por, $atualizado_em, $id);
-    } else {
-        $stmt = $mysqli->prepare("UPDATE celular SET titulo=?, horarios=?, dia=?, valor=?, turma=?, descricao=?, atualizado_por=?, atualizado_em=? WHERE id=?");
-        $stmt->bind_param("ssssdsssi", $titulo, $horarios, $dia, $valor, $turma, $descricao, $atualizado_por, $atualizado_em, $id);
+    if ($acao === "inserir") {
+        $stmt = $mysqli->prepare("INSERT INTO celular (titulo, data, dias, horarios, mensalidade, descricao) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssss", $titulo, $data, $dias, $horarios, $mensalidade, $descricao);
+        $stmt->execute();
+    } elseif ($acao === "editar" && $id > 0) {
+        $stmt = $mysqli->prepare("UPDATE celular SET titulo = ?, data = ?, dias = ?, horarios = ?, mensalidade = ?, descricao = ? WHERE id = ?");
+        $stmt->bind_param("ssssssi", $titulo, $data, $dias, $horarios, $mensalidade, $descricao, $id);
+        $stmt->execute();
     }
 
-    $stmt->execute();
-    $stmt->close();
-
-} else {
-    // Novo cadastro
-    $stmt = $mysqli->prepare("INSERT INTO celular (imagem, titulo, horarios, dia, valor, turma, descricao, atualizado_por, atualizado_em) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssdsss", $imagem, $titulo, $horarios, $dia, $valor, $turma, $descricao, $atualizado_por, $atualizado_em);
-    $stmt->execute();
-    $stmt->close();
+    header("Location: listar_celular.php");
+    exit;
 }
-
-// Redirecionar para listar_celular.php
-header("Location: listar_celular.php");
-exit;
-?>

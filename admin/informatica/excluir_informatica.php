@@ -1,20 +1,15 @@
+
 <?php
-// excluir_informatica.php
-// Exclui uma aula de Informática pelo ID
-// Após exclusão, redireciona para listar_informatica.php
-// Testado no XAMPP
+// admin/informatica/informatica_delete.php
 
-include_once("includes/_header.php");
-include_once("includes/_menu.php");
-include_once("../includes/_conexao.php");
+include_once("../includes/conexao.php");
 
-// Obter ID
-$id = (int) $_GET['id'];
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM informatica WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
 
-// Excluir registro
-$mysqli->query("DELETE FROM informatica WHERE id = $id");
-
-// Redirecionar
 header("Location: listar_informatica.php");
 exit;
-?>

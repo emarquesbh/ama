@@ -4,10 +4,10 @@
 // Recebe ID por GET e exclui do banco
 // Após exclusão, redireciona para listar_postura_alongamento.php
 // Testado no XAMPP
-
+include_once("../verifica_login.php"); // Ajuste o caminho conforme necessário
 include_once("includes/_header.php");
 include_once("includes/_menu.php");
-include_once("../includes/_conexao.php");
+include_once("../includes/conexao.php");
 
 // Obter ID
 $id = (int) $_GET['id'];

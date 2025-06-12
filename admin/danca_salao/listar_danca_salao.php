@@ -1,64 +1,51 @@
 <?php
-// listar_danca_salao.php
-// Listagem de aulas de Dança de Salão
-// Campos padrão das 10 perguntas + log
-// Testado no XAMPP
+// admin/danca_salao/listar_danca_salao.php
 
-include_once("../includes/_header.php");
-include_once("../includes/_menu.php");
-include_once("../includes/_conexao.php");
+include_once("../includes/conexao.php");
 
-// Buscar registros
-$sql = "SELECT * FROM danca_salao ORDER BY titulo";
-$result = $mysqli->query($sql);
+$result = $mysqli->query("SELECT * FROM danca_salao ORDER BY id DESC");
+if (!$result) {
+    die("Erro na consulta: " . $mysqli->error);
+}
 ?>
-<div class="container">
-    <h1 class="mb-4">Aulas de Dança de Salão - Listagem</h1>
-    <a href="danca_salao.php" class="btn btn-primary mb-3">Cadastrar Nova Aula</a>
-    <table class="table table-bordered table-striped">
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar Dança de Salão</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="m-0">Listagem - Dança de Salão</h2>
+        <a href="danca_salao_add.php" class="btn btn-success">Novo Registro</a>
+    </div>
+
+    <table class="table table-bordered table-hover table-striped">
         <thead>
             <tr>
-                <th>Imagem</th>
+                <th>ID</th>
                 <th>Título</th>
-                <th>Horários</th>
-                <th>Dia</th>
-                <th>Valor (R$)</th>
-                <th>Turma</th>
-                <th>Atualizado por</th>
-                <th>Atualizado em</th>
+                <th>Data</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-            <?php if ($result && $result->num_rows > 0): ?>
-                <?php while($row = $result->fetch_assoc()): ?>
-                    <tr>
-                        <td>
-                            <?php if (!empty($row['imagem'])): ?>
-                                <img src="../uploads/danca_salao/<?php echo htmlspecialchars($row['imagem']); ?>" alt="Imagem" style="width: 100px; height: auto;">
-                            <?php else: ?>
-                                Sem imagem
-                            <?php endif; ?>
-                        </td>
-                        <td><?php echo htmlspecialchars($row['titulo']); ?></td>
-                        <td><?php echo htmlspecialchars($row['horarios']); ?></td>
-                        <td><?php echo htmlspecialchars($row['dia']); ?></td>
-                        <td><?php echo number_format($row['valor'], 2, ',', '.'); ?></td>
-                        <td><?php echo htmlspecialchars($row['turma']); ?></td>
-                        <td><?php echo htmlspecialchars($row['atualizado_por']); ?></td>
-                        <td>
-                            <?php echo $row['atualizado_em'] ? date('d/m/Y H:i', strtotime($row['atualizado_em'])) : '-'; ?>
-                        </td>
-                        <td>
-                            <a href="editar_danca_salao.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">Editar</a>
-                            <a href="excluir_danca_salao.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza que deseja excluir esta aula?');">Excluir</a>
-                        </td>
-                    </tr>
-                <?php endwhile; ?>
-            <?php else: ?>
-                <tr><td colspan="9">Nenhuma aula cadastrada.</td></tr>
-            <?php endif; ?>
+            <?php while($row = $result->fetch_assoc()) { ?>
+                <tr>
+                    <td><?= $row['id'] ?></td>
+                    <td><?= $row['titulo'] ?></td>
+                    <td><?= $row['data'] ?></td>
+                    <td>
+                        <a href="danca_salao_edit.php?id=<?= $row['id'] ?>" class="btn btn-primary btn-sm">Editar</a>
+                        <a href="danca_salao_delete.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
+                </tr>
+            <?php } ?>
         </tbody>
     </table>
-</div>
-<?php include_once("../includes/_footer.php"); ?>
+</body>
+</html>
+
+
