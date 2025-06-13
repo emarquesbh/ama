@@ -1,5 +1,6 @@
 <?php
 // admin/danca_senior/listar_danca_senior.php
+include_once("../includes/_header.php");
 
 include_once("../includes/conexao.php");
 

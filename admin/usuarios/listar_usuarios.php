@@ -1,6 +1,5 @@
 <?php
 include_once("../includes/_header.php");
-include_once("../includes/_menu.php");
 include_once("../includes/_conexao.php");
 $filtro = isset($_GET['filtro']) ? trim($_GET['filtro']) : '';
 $sql = "SELECT * FROM usuarios" . ($filtro ? " WHERE nome LIKE '%$filtro%' OR email LIKE '%$filtro%'" : "") . " ORDER BY nome";

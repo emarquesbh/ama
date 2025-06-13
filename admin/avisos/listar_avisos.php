@@ -2,13 +2,13 @@
 // admin/avisos/listar_avisos.php
 
 include_once("../includes/conexao.php");
-include_once("../includes/_header.php");
-include_once("../includes/_menu.php");
-
 $result = $mysqli->query("SELECT * FROM avisos ORDER BY id DESC");
 if (!$result) {
     die("Erro na consulta: " . $mysqli->error);
 }
+
+include_once("../includes/_header.php");
+
 ?>
 
 <!DOCTYPE html>

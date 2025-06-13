@@ -1,6 +1,6 @@
 <?php
 // admin/vida_ativa/processar_vida_ativa.php
-
+include_once("../includes/_header.php");
 include_once("../includes/conexao.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

@@ -1,6 +1,5 @@
 <?php
 // admin/turmas/processar_turmas.php
-
 include_once("../includes/conexao.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

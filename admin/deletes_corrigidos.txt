@@ -1,0 +1,378 @@
+
+### INÍCIO DO ARQUIVO: bonecando_delete.php
+<?php
+// admin/bonecando/bonecando_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM bonecando WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_bonecando.php");
+exit;
+
+### FIM DO ARQUIVO: bonecando_delete.php
+
+### INÍCIO DO ARQUIVO: celular_delete.php
+<?php
+// admin/celular/celular_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM celular WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_celular.php");
+exit;
+
+### FIM DO ARQUIVO: celular_delete.php
+
+### INÍCIO DO ARQUIVO: coral_delete.php
+<?php
+// admin/coral/coral_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM coral WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_coral.php");
+exit;
+
+### FIM DO ARQUIVO: coral_delete.php
+
+### INÍCIO DO ARQUIVO: cursos_delete.php
+<?php
+// admin/cursos/cursos_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM cursos WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_cursos.php");
+exit;
+
+### FIM DO ARQUIVO: cursos_delete.php
+
+### INÍCIO DO ARQUIVO: danca_salao_delete.php
+<?php
+// admin/danca_salao/danca_salao_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM danca_salao WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_danca_salao.php");
+exit;
+
+### FIM DO ARQUIVO: danca_salao_delete.php
+
+### INÍCIO DO ARQUIVO: danca_senior_delete.php
+<?php
+// admin/danca_senior/danca_senior_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM danca_senior WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_danca_senior.php");
+exit;
+
+### FIM DO ARQUIVO: danca_senior_delete.php
+
+### INÍCIO DO ARQUIVO: danca_senior_eventos_delete.php
+<?php
+// admin/danca_senior_eventos/danca_senior_eventos_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM danca_senior_eventos WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_danca_senior_eventos.php");
+exit;
+
+### FIM DO ARQUIVO: danca_senior_eventos_delete.php
+
+### INÍCIO DO ARQUIVO: eventos_delete.php
+<?php
+// admin/eventos/eventos_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM eventos WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_eventos.php");
+exit;
+
+### FIM DO ARQUIVO: eventos_delete.php
+
+### INÍCIO DO ARQUIVO: galeria_delete.php
+<?php
+// admin/galeria/galeria_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM galeria WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_galeria.php");
+exit;
+
+### FIM DO ARQUIVO: galeria_delete.php
+
+### INÍCIO DO ARQUIVO: ginastica_delete.php
+<?php
+// admin/ginastica/ginastica_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM ginastica WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_ginastica.php");
+exit;
+
+### FIM DO ARQUIVO: ginastica_delete.php
+
+### INÍCIO DO ARQUIVO: grupo_reflexao_delete.php
+<?php
+// admin/grupo_reflexao/grupo_reflexao_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM grupo_reflexao WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_grupo_reflexao.php");
+exit;
+
+### FIM DO ARQUIVO: grupo_reflexao_delete.php
+
+### INÍCIO DO ARQUIVO: informatica_delete.php
+<?php
+// admin/informatica/informatica_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM informatica WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_informatica.php");
+exit;
+
+### FIM DO ARQUIVO: informatica_delete.php
+
+### INÍCIO DO ARQUIVO: lian_gong_delete.php
+<?php
+// admin/lian_gong/lian_gong_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM lian_gong WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_lian_gong.php");
+exit;
+
+### FIM DO ARQUIVO: lian_gong_delete.php
+
+### INÍCIO DO ARQUIVO: noticias_delete.php
+<?php
+// admin/noticias/noticias_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM noticias WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_noticias.php");
+exit;
+
+### FIM DO ARQUIVO: noticias_delete.php
+
+### INÍCIO DO ARQUIVO: postura_alongamento_delete.php
+<?php
+// admin/postura_alongamento/postura_alongamento_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM postura_alongamento WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_postura_alongamento.php");
+exit;
+
+### FIM DO ARQUIVO: postura_alongamento_delete.php
+
+### INÍCIO DO ARQUIVO: programacao_delete.php
+<?php
+// admin/programacao/programacao_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM programacao WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_programacao.php");
+exit;
+
+### FIM DO ARQUIVO: programacao_delete.php
+
+### INÍCIO DO ARQUIVO: reflexao_delete.php
+<?php
+// admin/reflexao/reflexao_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM reflexao WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_reflexao.php");
+exit;
+
+### FIM DO ARQUIVO: reflexao_delete.php
+
+### INÍCIO DO ARQUIVO: turmas_delete.php
+<?php
+// admin/turmas/turmas_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM turmas WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_turmas.php");
+exit;
+
+### FIM DO ARQUIVO: turmas_delete.php
+
+### INÍCIO DO ARQUIVO: vida_ativa_delete.php
+<?php
+// admin/vida_ativa/vida_ativa_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM vida_ativa WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_vida_ativa.php");
+exit;
+
+### FIM DO ARQUIVO: vida_ativa_delete.php
+
+### INÍCIO DO ARQUIVO: viagens_delete.php
+<?php
+// admin/viagens/viagens_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM viagens WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_viagens.php");
+exit;
+
+### FIM DO ARQUIVO: viagens_delete.php
+
+### INÍCIO DO ARQUIVO: yoga_delete.php
+<?php
+// admin/yoga/yoga_delete.php
+
+include_once("../includes/conexao.php");
+
+if (isset($_GET["id"])) {
+    $id = intval($_GET["id"]);
+    $stmt = $mysqli->prepare("DELETE FROM yoga WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+}
+
+header("Location: listar_yoga.php");
+exit;
+
+### FIM DO ARQUIVO: yoga_delete.php

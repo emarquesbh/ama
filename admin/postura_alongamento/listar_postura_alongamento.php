@@ -1,7 +1,7 @@
 
 <?php
 // admin/postura_alongamento/listar_postura_alongamento.php
-
+include_once("../includes/_header.php");
 include_once("../includes/conexao.php");
 
 $result = $mysqli->query("SELECT * FROM postura_alongamento ORDER BY id DESC");

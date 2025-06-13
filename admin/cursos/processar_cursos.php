@@ -1,6 +1,5 @@
 <?php
 // admin/cursos/processar_cursos.php
-
 include_once("../includes/conexao.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

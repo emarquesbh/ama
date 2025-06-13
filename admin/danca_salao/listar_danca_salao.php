@@ -1,7 +1,7 @@
 <?php
 // admin/danca_salao/listar_danca_salao.php
-
 include_once("../includes/conexao.php");
+include_once("../includes/_header.php");
 
 $result = $mysqli->query("SELECT * FROM danca_salao ORDER BY id DESC");
 if (!$result) {

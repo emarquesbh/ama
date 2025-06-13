@@ -6,7 +6,6 @@
 // Usa TinyMCE e Bootstrap 5
 
 include_once("../includes/_header.php");
-include_once("../includes/_menu.php");
 ?>
 
 <div class="container">

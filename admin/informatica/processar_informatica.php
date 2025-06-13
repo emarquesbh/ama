@@ -1,6 +1,6 @@
 <?php
 // admin/informatica/processar_informatica.php
-
+include_once("../includes/_header.php");
 include_once("../includes/conexao.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

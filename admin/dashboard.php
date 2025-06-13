@@ -6,7 +6,6 @@
 // Testado no XAMPP
 
 include_once("includes/_header.php");
-include_once("includes/_menu.php");
 ?>
 <div class="container">
     <h1 class="mb-4">Painel Administrativo - Clube da Amizade</h1>

@@ -1,6 +1,5 @@
 <?php
 // admin/celular/processar_celular.php
-
 include_once("../includes/conexao.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

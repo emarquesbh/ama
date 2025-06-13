@@ -1,7 +1,7 @@
-### INÍCIO DO ARQUIVO: processar_ginastica.php
+
 <?php
 // admin/ginastica/processar_ginastica.php
-
+include_once("../includes/_header.php");
 include_once("../includes/conexao.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -27,6 +27,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     header("Location: listar_ginastica.php");
     exit;
 }
-
-### FIM DO ARQUIVO: processar_ginastica.php
 

@@ -1,6 +1,6 @@
-### INÍCIO DO ARQUIVO: cursos_add.php
 <?php
 // admin/cursos/cursos_add.php
+include_once("../includes/_header.php");
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +9,8 @@
     <meta charset="UTF-8">
     <title>Adicionar Cursos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="../assets/js/tinymce/tinymce.min.js"></script>
+
     <script>
         tinymce.init({ selector: '#descricao' });
     </script>
@@ -54,4 +55,3 @@
     </form>
 </body>
 </html>
-### FIM DO ARQUIVO: cursos_add.php

@@ -1,6 +1,6 @@
 <?php
 // admin/programacao/listar_programacao.php
-
+include_once("../includes/_header.php");
 include_once("../includes/conexao.php");
 
 $result = $mysqli->query("SELECT * FROM programacao ORDER BY id DESC");

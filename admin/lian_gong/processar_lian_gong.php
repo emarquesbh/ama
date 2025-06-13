@@ -1,6 +1,6 @@
 <?php
 // admin/lian_gong/processar_lian_gong.php
-
+include_once("../includes/_header.php");
 include_once("../includes/conexao.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

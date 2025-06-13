@@ -1,6 +1,5 @@
 <?php
 // admin/bonecando/bonecando_edit.php
-
 include_once("../includes/conexao.php");
 
 if (!isset($_GET["id"])) {
@@ -19,6 +18,8 @@ if (!$dado) {
     echo "Registro não encontrado!";
     exit;
 }
+
+include_once("../includes/_header.php");
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +28,8 @@ if (!$dado) {
     <meta charset="UTF-8">
     <title>Editar Bonecando</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="../assets/js/tinymce/tinymce.min.js"></script>
+  
     <script>
         tinymce.init({ selector: '#descricao' });
     </script>

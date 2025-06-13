@@ -2,7 +2,7 @@
 ### INÍCIO DO ARQUIVO: listar_viagens.php
 <?php
 // admin/viagens/listar_viagens.php
-
+include_once("../includes/_header.php");
 include_once("../includes/conexao.php");
 
 $result = $mysqli->query("SELECT * FROM viagens ORDER BY id DESC");

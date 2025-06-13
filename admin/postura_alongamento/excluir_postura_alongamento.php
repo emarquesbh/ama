@@ -6,7 +6,6 @@
 // Testado no XAMPP
 include_once("../verifica_login.php"); // Ajuste o caminho conforme necessário
 include_once("includes/_header.php");
-include_once("includes/_menu.php");
 include_once("../includes/conexao.php");
 
 // Obter ID

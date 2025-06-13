@@ -1,5 +1,6 @@
 <?php
 // admin/viagens/processar_viagens.php
+include_once("../includes/_header.php");
 
 include_once("../includes/conexao.php");
 

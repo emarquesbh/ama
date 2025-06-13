@@ -1,8 +1,6 @@
 <?php
 // admin/celular/listar_celular.php
-
 include_once("../includes/conexao.php");
-
 $result = $mysqli->query("SELECT * FROM celular ORDER BY id DESC");
 if (!$result) {
     die("Erro na consulta: " . $mysqli->error);

@@ -1,8 +1,6 @@
-
-### INÍCIO DO ARQUIVO: listar_informatica.php
 <?php
 // admin/informatica/listar_informatica.php
-
+include_once("../includes/_header.php");
 include_once("../includes/conexao.php");
 
 $result = $mysqli->query("SELECT * FROM informatica ORDER BY id DESC");
@@ -49,4 +47,3 @@ if (!$result) {
     </table>
 </body>
 </html>
-### FIM DO ARQUIVO: listar_informatica.php

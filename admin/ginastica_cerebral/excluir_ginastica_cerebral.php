@@ -1,5 +1,6 @@
 <?php
 // admin/ginastica_cerebral/ginastica_cerebral_delete.php
+include_once("../includes/_header.php");
 
 include_once("../includes/conexao.php");
 

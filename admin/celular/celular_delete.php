@@ -1,9 +1,5 @@
-
-
-### INÍCIO DO ARQUIVO: celular_delete.php
 <?php
 // admin/celular/celular_delete.php
-
 include_once("../includes/conexao.php");
 
 if (isset($_GET["id"])) {
@@ -15,4 +11,3 @@ if (isset($_GET["id"])) {
 
 header("Location: listar_celular.php");
 exit;
-### FIM DO ARQUIVO: celular_delete.php

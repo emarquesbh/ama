@@ -1,6 +1,6 @@
 <?php
 // admin/ginastica_cerebral/processar_ginastica_cerebral.php
-
+include_once("../includes/_header.php");
 include_once("../includes/conexao.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

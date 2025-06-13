@@ -1,7 +1,6 @@
-
-### INÍCIO DO ARQUIVO: listar_galeria.php
 <?php
 // admin/galeria/listar_galeria.php
+include_once("../includes/_header.php");
 
 include_once("../includes/conexao.php");
 
@@ -49,4 +48,3 @@ if (!$result) {
     </table>
 </body>
 </html>
-### FIM DO ARQUIVO: listar_galeria.php

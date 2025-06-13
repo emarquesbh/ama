@@ -1,7 +1,7 @@
 
 <?php
 // admin/noticias/noticias_delete.php
-
+include_once("../includes/_header.php");
 include_once("../includes/conexao.php");
 
 if (isset($_GET["id"])) {

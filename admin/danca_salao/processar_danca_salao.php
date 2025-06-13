@@ -1,6 +1,5 @@
 <?php
 // admin/danca_salao/processar_danca_salao.php
-
 include_once("../includes/conexao.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

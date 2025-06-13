@@ -7,7 +7,7 @@
 
 include_once("../verifica_login.php"); // Ajuste o caminho conforme necessário
 include_once("../includes/_header.php");
-include_once("../includes/_menu.php");
+
 ?>
 <div class="container">
     <h1 class="mb-4">Cadastrar Aula de Yoga</h1>

@@ -2,8 +2,6 @@
 // admin/avisos/avisos_delete.php
 
 include_once("../includes/conexao.php");
-include_once("../includes/_header.php");
-include_once("../includes/_menu.php");
 
 if (isset($_GET["id"])) {
     $id = intval($_GET["id"]);
@@ -14,3 +12,5 @@ if (isset($_GET["id"])) {
 
 header("Location: listar_avisos.php");
 exit;
+
+

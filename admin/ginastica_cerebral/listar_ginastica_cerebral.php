@@ -1,6 +1,6 @@
 <?php
 // admin/ginastica_cerebral/listar_ginastica_cerebral.php
-
+include_once("../includes/_header.php");
 include_once("../includes/conexao.php");
 
 $result = $mysqli->query("SELECT * FROM ginastica_cerebral ORDER BY id DESC");

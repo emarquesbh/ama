@@ -6,7 +6,7 @@
 // Utiliza Bootstrap 5 e TinyMCE
 
 include_once("../includes/_header.php");
-include_once("../includes/_menu.php");
+
 
 $mysqli = new mysqli("localhost", "root", "", "ama");
 if ($mysqli->connect_error) {

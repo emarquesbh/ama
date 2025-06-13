@@ -1,6 +1,6 @@
 <?php
 // admin/informatica/informatica_edit.php
-
+include_once("../includes/_header.php");
 include_once("../includes/conexao.php");
 
 if (!isset($_GET["id"])) {
@@ -27,8 +27,8 @@ if (!$dado) {
     <meta charset="UTF-8">
     <title>Editar Informática</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
+    <script src="../assets/js/tinymce/tinymce.min.js"></script>
+
         tinymce.init({ selector: '#descricao' });
     </script>
 </head>

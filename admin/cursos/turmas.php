@@ -6,8 +6,6 @@
 // Filtro por curso_id (opcional)
 // Usa Bootstrap 5, acessível, testado no XAMPP
 
-include_once("../includes/_header.php");
-include_once("../includes/_menu.php");
 include_once("../includes/conexao.php");
 
 if ($mysqli->connect_error) {

@@ -2,9 +2,6 @@
 // danca_senior.php
 // Formulário de cadastro de aula de Dança Sênior
 // Testado no XAMPP
-
-include_once("../includes/_header.php");
-include_once("../includes/_menu.php");
 include_once("../includes/conexao.php");
 ?>
 <div class="container">

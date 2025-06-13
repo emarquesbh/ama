@@ -1,7 +1,7 @@
 
 <?php
 // admin/noticias/listar_noticias.php
-
+include_once("../includes/_header.php");
 include_once("../includes/conexao.php");
 
 $result = $mysqli->query("SELECT * FROM noticias ORDER BY id DESC");

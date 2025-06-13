@@ -1,6 +1,6 @@
 <?php
 // admin/ginastica/listar_ginastica.php
-
+include_once("../includes/_header.php");
 include_once("../includes/conexao.php");
 
 $result = $mysqli->query("SELECT * FROM ginastica ORDER BY id DESC");

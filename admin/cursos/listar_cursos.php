@@ -1,7 +1,7 @@
 <?php
 // admin/cursos/listar_cursos.php
-
 include_once("../includes/conexao.php");
+include_once("../includes/_header.php");
 
 $result = $mysqli->query("SELECT * FROM cursos ORDER BY id DESC");
 if (!$result) {

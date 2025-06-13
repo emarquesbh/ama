@@ -1,6 +1,7 @@
 
 <?php
 include_once("../includes/conexao.php");
+include_once("../includes/_header.php");
 
 $result = $mysqli->query("SELECT * FROM lian_gong ORDER BY id DESC");
 if (!$result) {

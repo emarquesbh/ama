@@ -1,5 +1,6 @@
 <?php
 // admin/lian_gong/lian_gong_delete.php
+include_once("../includes/_header.php");
 
 include_once("../includes/conexao.php");
 

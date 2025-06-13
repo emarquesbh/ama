@@ -1,6 +1,5 @@
 <?php
-
-
+include_once("../includes/_header.php");
 include_once("../includes/conexao.php");
 
 $result = $mysqli->query("SELECT * FROM eventos ORDER BY id DESC");

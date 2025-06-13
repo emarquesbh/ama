@@ -1,5 +1,6 @@
 <?php
 // admin/galeria/processar_galeria.php
+include_once("../includes/_header.php");
 
 include_once("../includes/conexao.php");
 

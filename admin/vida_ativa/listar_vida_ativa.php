@@ -1,6 +1,6 @@
 <?php
 // admin/vida_ativa/listar_vida_ativa.php
-
+include_once("../includes/_header.php");
 include_once("../includes/conexao.php");
 
 $result = $mysqli->query("SELECT * FROM vida_ativa ORDER BY id DESC");

@@ -1,6 +1,7 @@
 ### INÍCIO DO ARQUIVO: ginastica_cerebral_edit.php
 <?php
 // admin/ginastica_cerebral/ginastica_cerebral_edit.php
+include_once("../includes/_header.php");
 
 include_once("../includes/conexao.php");
 
@@ -28,6 +29,7 @@ if (!$dado) {
     <meta charset="UTF-8">
     <title>Editar Ginástica Cerebral</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../assets/js/tinymce/tinymce.min.js"></script>
 </head>
 <body class="container mt-4">
     <h2>Editar Registro - Ginástica Cerebral</h2>

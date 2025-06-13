@@ -6,8 +6,6 @@
 // Usa Bootstrap 5, acessível e com hover suave
 // Testado no XAMPP com banco ama
 
-include_once("../includes/_header.php");
-include_once("../includes/_menu.php");
 include_once("../includes/_conexao.php");
 
 if ($mysqli->connect_error) {

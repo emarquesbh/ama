@@ -1,12 +1,12 @@
 <?php
 // ginastica.php
+include_once("../includes/_header.php");
 // Formulário de cadastro de Ginástica
 // Campos: imagem, título, horários, dia, valor, turma, descrição (TinyMCE)
 // Upload com GD (imagem principal)
 // Testado no XAMPP
 
-include_once("../includes/_header.php");
-include_once("../includes/_menu.php");
+
 ?>
 <div class="container">
     <h1 class="mb-4">Cadastrar Aula de Ginástica</h1>

@@ -1,7 +1,6 @@
 
 <?php
 include_once("../includes/_header.php");
-include_once("../includes/_menu.php");
 include_once("../includes/conexao.php");
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;

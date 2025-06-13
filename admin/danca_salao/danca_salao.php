@@ -4,8 +4,6 @@
 // Campos padrão das 10 perguntas (imagem, título, horários, dia, valor, turma, descrição, log)
 // Testado no XAMPP
 
-include_once("../includes/_header.php");
-include_once("../includes/_menu.php");
 include_once("../includes/conexao.php");
 ?>
 <div class="container">

@@ -1,7 +1,6 @@
 
 <?php
 // admin/coral/coral_delete.php
-
 include_once("../includes/conexao.php");
 
 if (isset($_GET["id"])) {

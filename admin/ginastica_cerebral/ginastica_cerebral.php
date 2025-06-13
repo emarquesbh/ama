@@ -9,7 +9,6 @@
 // Compatível com XAMPP e preparado para público 60+
 
 include_once("../includes/_header.php");
-include_once("../includes/_menu.php");
 
 // Conecta ao banco de dados
 $mysqli = new mysqli("localhost", "root", "", "ama");
