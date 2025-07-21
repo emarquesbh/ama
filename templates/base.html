@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Atividades Físicas{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/acessibilidade.js' %}"></script>
+</head>
+<body>
+    <header>
+        <button onclick="toggleTheme()">🌗 Tema</button>
+        <button onclick="aumentarFonte()">A+</button>
+        <button onclick="diminuirFonte()">A-</button>
+    </header>
+    <main>{% block content %}{% endblock %}</main>
+</body>
+</html>

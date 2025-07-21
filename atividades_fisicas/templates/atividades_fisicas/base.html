@@ -1,0 +1,29 @@
+<!-- Path: templates/base.html -->
+<!-- Template base com acessibilidade, contraste, fonte ajustável, leitura de texto -->
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Clube AMA{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="{% static 'js/acessibilidade.js' %}"></script>
+</head>
+<body>
+  <header>
+    <div class="menu-acessibilidade">
+      <button onclick="toggleTheme()">🌗 Tema</button>
+      <button onclick="aumentarFonte()">A+</button>
+      <button onclick="diminuirFonte()">A-</button>
+      <button onclick="lerTexto()">🔊 Ler</button>
+    </div>
+  </header>
+
+  <main id="conteudo" class="container">
+    {% block conteudo %}{% endblock %}
+  </main>
+
+  <footer class="text-center mt-5 text-muted">
+    Clube Site AMA - Acessível para todos
+  </footer>
+</body>
+</html>

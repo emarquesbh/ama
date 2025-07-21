@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{% if submenu %}Atividades: {{ submenu }}{% else %}Lista de Atividades{% endif %}</h2>
+<a href="{% url submenu|lower|stringformat:'_create' %}">Nova Atividade</a>
+<ul>
+    {% for atividade in atividades %}
+        <li>{{ atividade.titulo }} ({{ atividade.data_inicio }} {{ atividade.hora_inicio }})</li>
+    {% empty %}
+        <li>Nenhuma atividade cadastrada.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

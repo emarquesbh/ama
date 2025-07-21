@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if submenu %}<h2>Nova Atividade - {{ submenu }}</h2>{% else %}<h2>Nova Atividade</h2>{% endif %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <h3>Imagens da Galeria (até 4)</h3>
+    {{ formset.management_form }}
+    {% for form in formset %}
+        {{ form.as_p }}
+    {% endfor %}
+
+    <button type="submit">Salvar</button>
+</form>
+{% endblock %}

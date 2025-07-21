@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="bg-white text-black dark:bg-gray-900 dark:text-white">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clube da Amizade</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+    }
+    function aumentarFonte() {
+      document.body.style.fontSize = 'larger';
+    }
+    function diminuirFonte() {
+      document.body.style.fontSize = 'smaller';
+    }
+    function resetarFonte() {
+      document.body.style.fontSize = '';
+    }
+    function lerTexto() {
+      const texto = document.getElementById("conteudo")?.innerText;
+      const synth = window.speechSynthesis;
+      if (texto && synth) {
+        const utterance = new SpeechSynthesisUtterance(texto);
+        synth.speak(utterance);
+      }
+    }
+  </script>
+</head>
+<body class="transition duration-300 ease-in-out font-sans">
+
+  <header class="bg-blue-700 dark:bg-gray-800 text-white p-4 shadow">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+      <h1 class="text-2xl font-bold">Clube da Amizade</h1>
+      <div class="flex gap-2 mt-2 md:mt-0">
+        <button onclick="toggleDarkMode()" class="bg-white text-black px-2 py-1 rounded">Claro/Escuro</button>
+        <button onclick="aumentarFonte()" class="bg-white text-black px-2 py-1 rounded">A+</button>
+        <button onclick="diminuirFonte()" class="bg-white text-black px-2 py-1 rounded">A-</button>
+        <button onclick="resetarFonte()" class="bg-white text-black px-2 py-1 rounded">A=</button>
+        <button onclick="lerTexto()" class="bg-yellow-400 px-2 py-1 rounded text-black">🔊 Ler</button>
+      </div>
+    </div>
+  </header>
+
+  {% block content %}
+  {% endblock %}
+
+  <footer class="bg-blue-700 dark:bg-gray-800 text-white text-center p-4 mt-8">
+    <p>&copy; {{ now|date:"Y" }} Clube da Amizade. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>

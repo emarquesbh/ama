@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<main id="conteudo" class="p-4">
+  <h1 class="text-3xl font-bold mb-4">Dança Sênior</h1>
+  <div class="mb-4 text-justify text-lg">{{ atividade.descricao|safe }}</div>
+  <div class="mb-4">
+    <strong>Data:</strong> {{ atividade.data_inicio }} a {{ atividade.data_fim }}<br>
+    <strong>Horário:</strong> {{ atividade.hora_inicio }} às {{ atividade.hora_fim }}
+  </div>
+  {% if atividade.imagem_principal %}
+  <div class="mb-4">
+    <img src="{{ atividade.imagem_principal.url }}" alt="Imagem principal" class="rounded-lg shadow-lg">
+  </div>
+  {% endif %}
+  {% if atividade.imagens_galeria.all %}
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    {% for imagem in atividade.imagens_galeria.all %}
+    <div>
+      <img src="{{ imagem.imagem.url }}" alt="{{ imagem.legenda }}" class="rounded-md">
+      {% if imagem.legenda %}<p class="text-sm mt-1">{{ imagem.legenda }}</p>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</main>
+{% endblock %}

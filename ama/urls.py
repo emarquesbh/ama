@@ -1,15 +1,14 @@
 from django.contrib import admin
 from django.urls import path, include
-
-# --- INÍCIO DA PERSONALIZAÇÃO ---
-# Defina os novos títulos aqui
-admin.site.site_header = 'Administração do Club da Amizade'
-admin.site.site_title = 'Portal Administrativo Club da Amizade'
-admin.site.index_title = 'Bem-vindo ao portal do Club da Amizade'
-# --- FIM DA PERSONALIZAÇÃO ---
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # ... outras rotas do seu projeto
-    # path('', include('ama.urls')),
+    path('atividades/', include('atividades_fisicas.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

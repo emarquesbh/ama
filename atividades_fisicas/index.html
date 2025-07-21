@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="p-4 max-w-4xl mx-auto" id="conteudo">
+  <h2 class="text-4xl font-bold mb-6 text-center">Bem-vindo ao Clube da Amizade</h2>
+  <p class="text-lg mb-6 text-justify">
+    Nosso clube oferece uma variedade de atividades para promover o bem-estar, saúde e convivência social.
+    Explore nossas categorias e participe das iniciativas que mais combinam com você!
+  </p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <a href="{% url 'yoga_publica' %}" class="block bg-green-200 dark:bg-green-800 p-4 rounded-lg shadow hover:shadow-lg">
+      <h3 class="text-xl font-semibold">Yoga</h3>
+      <p>Equilíbrio físico e mental com práticas suaves.</p>
+    </a>
+    <a href="{% url 'ginastica_publica' %}" class="block bg-blue-200 dark:bg-blue-800 p-4 rounded-lg shadow hover:shadow-lg">
+      <h3 class="text-xl font-semibold">Ginástica</h3>
+      <p>Movimente-se com exercícios energizantes e acessíveis.</p>
+    </a>
+    <a href="{% url 'dancasenior_publica' %}" class="block bg-pink-200 dark:bg-pink-800 p-4 rounded-lg shadow hover:shadow-lg">
+      <h3 class="text-xl font-semibold">Dança Sênior</h3>
+      <p>Diversão e saúde em grupo com ritmos animados.</p>
+    </a>
+    <a href="{% url 'posturaalongamento_publica' %}" class="block bg-purple-200 dark:bg-purple-800 p-4 rounded-lg shadow hover:shadow-lg">
+      <h3 class="text-xl font-semibold">Postura e Alongamento</h3>
+      <p>Melhore sua postura e flexibilidade com segurança.</p>
+    </a>
+  </div>
+</main>
+{% endblock %}
