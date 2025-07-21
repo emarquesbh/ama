@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script src="{% static 'js/acessibilidade.js' %}"></script>
 <main id="conteudo" class="p-4">
   <h1 class="text-3xl font-bold mb-4">Ginástica</h1>
   <div class="mb-4 text-justify text-lg">{{ atividade.descricao|safe }}</div>

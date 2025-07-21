@@ -1,5 +1,3 @@
-from django.contrib import admin
-
 # Path: projeto/admin.py
 # Registra no painel administrativo os modelos do app Projeto
 # Cada atividade aparecerá como submenu separado no admin

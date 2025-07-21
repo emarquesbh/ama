@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script src="{% static 'js/acessibilidade.js' %}"></script>
 <h2>{% if submenu %}Atividades: {{ submenu }}{% else %}Lista de Atividades{% endif %}</h2>
 <a href="{% url submenu|lower|stringformat:'_create' %}">Nova Atividade</a>
 <ul>

@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script src="{% static 'js/acessibilidade.js' %}"></script>
 {% if submenu %}<h2>Nova Atividade - {{ submenu }}</h2>{% else %}<h2>Nova Atividade</h2>{% endif %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}

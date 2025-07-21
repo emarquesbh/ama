@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block title %}Yoga{% endblock %}
-
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script src="{% static 'js/acessibilidade.js' %}"></script>
 {% block conteudo %}
   <h1>Yoga</h1>
   <div class="descricao">{{ yoga.descricao|safe }}</div>

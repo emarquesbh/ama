@@ -4,29 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Clube da Amizade</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    function toggleDarkMode() {
-      document.documentElement.classList.toggle('dark');
-    }
-    function aumentarFonte() {
-      document.body.style.fontSize = 'larger';
-    }
-    function diminuirFonte() {
-      document.body.style.fontSize = 'smaller';
-    }
-    function resetarFonte() {
-      document.body.style.fontSize = '';
-    }
-    function lerTexto() {
-      const texto = document.getElementById("conteudo")?.innerText;
-      const synth = window.speechSynthesis;
-      if (texto && synth) {
-        const utterance = new SpeechSynthesisUtterance(texto);
-        synth.speak(utterance);
-      }
-    }
-  </script>
+  {% load static %}
+ <link rel="stylesheet" href="{% static 'css/style.css' %}">
+ <script src="{% static 'js/acessibilidade.js' %}"></script>
+
 </head>
 <body class="transition duration-300 ease-in-out font-sans">
 

@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script src="{% static 'js/acessibilidade.js' %}"></script>
 <main class="p-4 max-w-4xl mx-auto" id="conteudo">
   <h2 class="text-3xl font-bold mb-4">{{ atividade.titulo }}</h2>
   <p class="text-sm text-gray-500 mb-2">De {{ atividade.data_inicio }} até {{ atividade.data_fim }} | {{ atividade.hora_inicio }} - {{ atividade.hora_fim }}</p>

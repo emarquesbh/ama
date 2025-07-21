@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script src="{% static 'js/acessibilidade.js' %}"></script>
 <main class="p-4 max-w-4xl mx-auto" id="conteudo">
   <h2 class="text-4xl font-bold mb-6 text-center">Bem-vindo ao Clube da Amizade</h2>
   <p class="text-lg mb-6 text-justify">
