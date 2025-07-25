@@ -1,0 +1,10 @@
+<!-- Caminho: templates/atividades_fisicas/posturaalongamento_publica.html -->
+{% extends 'base.html' %}
+{% block content %}
+  {% if atividade %}
+    <h1>{{ atividade.titulo }}</h1>
+    <div>{{ atividade.descricao|safe }}</div>
+  {% else %}
+    <p>Nenhuma atividade cadastrada.</p>
+  {% endif %}
+{% endblock %}

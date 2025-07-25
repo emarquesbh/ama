@@ -1,0 +1,24 @@
+<!-- Caminho: atividades_fisicas/templates/base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Atividades Físicas{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/acessibilidade.js' %}"></script>
+    <script src="{% static 'tinymce/js/tinymce/tinymce.min.js' %}"></script>
+</head>
+<body>
+    <header>
+        <button onclick="toggleTheme()">🌗 Tema</button>
+        <button onclick="aumentarFonte()">A+</button>
+        <button onclick="diminuirFonte()">A-</button>
+        <button onclick="lerTexto()">🔊 Ler Texto</button>
+    </header>
+
+    <main id="conteudo" tabindex="0">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

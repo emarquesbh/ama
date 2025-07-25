@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Yoga - Clube da Amizade{% endblock %}
+
+{% block content %}
+<article class="mb-5">
+  <h2 class="fs-2 leitura">Aula de Yoga</h2>
+  {% if imagem %}
+    <img src="{{ imagem.url }}" alt="Imagem principal da atividade Yoga" class="img-fluid mb-3" tabindex="0">
+  {% endif %}
+
+  <section class="mb-4" tabindex="0">
+    <div class="leitura">{{ descricao|safe }}</div>
+  </section>
+
+  <section aria-label="Galeria de imagens" class="d-flex gap-3 flex-wrap" tabindex="0">
+    {% for img in imagem1, imagem2, imagem3 %}
+      {% if img %}
+        <img src="{{ img.url }}" alt="Imagem da galeria Yoga" class="img-thumbnail" style="width:200px" tabindex="0">
+      {% endif %}
+    {% endfor %}
+  </section>
+</article>
+
+<script>
+function lerTexto() {
+  const texto = Array.from(document.querySelectorAll('.leitura'))
+    .map(el => el.innerText)
+    .join(". ");
+  const msg = new SpeechSynthesisUtterance(texto);
+  msg.lang = 'pt-BR';
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(msg);
+}
+</script>
+{% endblock %}
+=== FIM DO MÓDULO: atividades_fisicas/templates/public/yoga.html ===
+

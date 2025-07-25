@@ -1,10 +1,21 @@
+from . import views 
 from django.urls import path
-from . import views
+from .views import (
+    index,
+    yoga_view,
+    ginastica_publica,
+    posturaalongamento_publica,
+    dancasenior_publica,
+)
+
+app_name = 'atividades_fisicas'
 
 urlpatterns = [
-    path('', views.index, name='index_publica'),
-    path('yoga/', views.yoga_publica, name='yoga_publica'),
-    path('ginastica/', views.ginastica_publica, name='ginastica_publica'),
-    path('dancasenior/', views.dancasenior_publica, name='dancasenior_publica'),
-    path('posturaalongamento/', views.posturaalongamento_publica, name='posturaalongamento_publica'),
+    path('', index, name='index'),
+    path('yoga/', yoga_view, name='yoga_public'),
+    path('ginastica/', ginastica_publica, name='ginastica_public'),
+    path('posturaalongamento/', posturaalongamento_publica, name='posturaalongamento_public'),
+    path('dancasenior/', dancasenior_publica, name='dancasenior_public'),
+    path("contato/", views.contato, name="contato"),
+    
 ]

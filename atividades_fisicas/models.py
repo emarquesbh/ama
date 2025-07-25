@@ -1,6 +1,8 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from PIL import Image
+# Path: C:\clube_amizade\atividades_fisicas\models.py
+from django.conf import settings
 
 def imagem_upload_path(instance, filename):
     return f'atividades_fisicas/imagens/{filename}'
@@ -28,8 +30,12 @@ class BaseAtividade(models.Model):
     data_fim = models.DateField()
     hora_inicio = models.TimeField()
     hora_fim = models.TimeField()
-    imagem_principal = models.ImageField(upload_to='atividades_fisicas/imagem_principal/', null=True, blank=True)
-    imagens_galeria = models.ManyToManyField(Imagem, blank=True)
+    valor = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    quem_atualizou = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
+    imagem = models.ImageField(upload_to='atividades_fisicas/imagens/', null=True, blank=True)
+    imagem1 = models.ImageField(upload_to='atividades_fisicas/imagens/', null=True, blank=True)
+    imagem2 = models.ImageField(upload_to='atividades_fisicas/imagens/', null=True, blank=True)
+    imagem3 = models.ImageField(upload_to='atividades_fisicas/imagens/', null=True, blank=True)
     criado_em = models.DateTimeField(auto_now_add=True)
     atualizado_em = models.DateTimeField(auto_now=True)
 
@@ -43,3 +49,5 @@ class Ginastica(BaseAtividade): pass
 class Yoga(BaseAtividade): pass
 class PosturaAlongamento(BaseAtividade): pass
 class DancaSenior(BaseAtividade): pass
+
+

@@ -1,5 +1,13 @@
 from django import forms
 from .models import Ginastica, Imagem
+from django import forms
+
+class ContatoForm(forms.Form):
+    str_nome = forms.CharField(label="Nome", required=True, max_length=100)
+    str_telefone = forms.CharField(label="Telefone", required=False, max_length=20)
+    str_email = forms.EmailField(label="Email", required=True)
+    str_mensagem = forms.CharField(label="Mensagem", required=True, widget=forms.Textarea)
+
 
 class ImagemForm(forms.ModelForm):
     class Meta:

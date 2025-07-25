@@ -1,31 +1,137 @@
-{% extends "base.html" %}
-{% block content %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-<script src="{% static 'js/acessibilidade.js' %}"></script>
-<main class="p-4 max-w-4xl mx-auto" id="conteudo">
-  <h2 class="text-4xl font-bold mb-6 text-center">Bem-vindo ao Clube da Amizade</h2>
-  <p class="text-lg mb-6 text-justify">
-    Nosso clube oferece uma variedade de atividades para promover o bem-estar, saúde e convivência social.
-    Explore nossas categorias e participe das iniciativas que mais combinam com você!
-  </p>
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-    <a href="{% url 'yoga_publica' %}" class="block bg-green-200 dark:bg-green-800 p-4 rounded-lg shadow hover:shadow-lg">
-      <h3 class="text-xl font-semibold">Yoga</h3>
-      <p>Equilíbrio físico e mental com práticas suaves.</p>
-    </a>
-    <a href="{% url 'ginastica_publica' %}" class="block bg-blue-200 dark:bg-blue-800 p-4 rounded-lg shadow hover:shadow-lg">
-      <h3 class="text-xl font-semibold">Ginástica</h3>
-      <p>Movimente-se com exercícios energizantes e acessíveis.</p>
-    </a>
-    <a href="{% url 'dancasenior_publica' %}" class="block bg-pink-200 dark:bg-pink-800 p-4 rounded-lg shadow hover:shadow-lg">
-      <h3 class="text-xl font-semibold">Dança Sênior</h3>
-      <p>Diversão e saúde em grupo com ritmos animados.</p>
-    </a>
-    <a href="{% url 'posturaalongamento_publica' %}" class="block bg-purple-200 dark:bg-purple-800 p-4 rounded-lg shadow hover:shadow-lg">
-      <h3 class="text-xl font-semibold">Postura e Alongamento</h3>
-      <p>Melhore sua postura e flexibilidade com segurança.</p>
-    </a>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atividades Físicas</title>
+  <style>
+    :root {
+      --base-font-size: 16px;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      font-size: var(--base-font-size);
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    /* High contrast */
+    body.high-contrast {
+      background-color: #000;
+      color: #ff0;
+    }
+    body.high-contrast .activity-button {
+      background-color: #ff0;
+      color: #000;
+    }
+    .accessibility-toolbar {
+      display: flex;
+      gap: 10px;
+      padding: 10px;
+      background: #eee;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .accessibility-toolbar button {
+      padding: 8px 12px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .activities-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      gap: 20px;
+    }
+    .activity-button {
+      display: inline-block;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      padding: 20px;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 8px;
+      width: 250px;
+      text-align: center;
+    }
+    .activity-button:focus {
+      outline: 3px solid #ffa500;
+    }
+  </style>
+</head>
+<body>
+  <div class="accessibility-toolbar">
+    <button id="contrastBtn">Alto Contraste</button>
+    <button id="fontIncreaseBtn">A+</button>
+    <button id="readTextBtn">Ler Texto</button>
+    <button id="keyboardNavBtn">Navegação por Teclado</button>
   </div>
-</main>
-{% endblock %}
+
+  <main id="content">
+    <h1>Atividades Físicas</h1>
+    <div class="activities-container">
+      <a class="activity-button" href="/yoga/">Yoga</a>
+      <a class="activity-button" href="/ginastica/">Ginástica</a>
+      <a class="activity-button" href="/posturaalongamento/">Postura e Alongamento</a>
+      <a class="activity-button" href="/dancasenior/">Dança Sênior</a>
+    </div>
+  </main>
+
+  <script>
+    // Alto contraste
+    document.getElementById('contrastBtn').addEventListener('click', () => {
+      document.body.classList.toggle('high-contrast');
+    });
+
+    // Aumentar fonte
+    let currentSize = 16;
+    document.getElementById('fontIncreaseBtn').addEventListener('click', () => {
+      currentSize += 2;
+      document.documentElement.style.setProperty('--base-font-size', currentSize + 'px');
+    });
+
+    // Ler texto (text-to-speech)
+    document.getElementById('readTextBtn').addEventListener('click', () => {
+      const content = document.getElementById('content').innerText;
+      const utterance = new SpeechSynthesisUtterance(content);
+      speechSynthesis.speak(utterance);
+    });
+
+    // Navegação por teclado
+    let keyboardNavEnabled = false;
+    let keyNavHandler;
+    const buttons = Array.from(document.querySelectorAll('.activity-button'));
+    document.getElementById('keyboardNavBtn').addEventListener('click', function() {
+      if (!keyboardNavEnabled) {
+        let current = 0;
+        buttons[current].focus();
+        keyNavHandler = (e) => {
+          if (e.key === 'ArrowRight') {
+            buttons[current].blur();
+            current = (current + 1) % buttons.length;
+            buttons[current].focus();
+            e.preventDefault();
+          }
+          if (e.key === 'ArrowLeft') {
+            buttons[current].blur();
+            current = (current - 1 + buttons.length) % buttons.length;
+            buttons[current].focus();
+            e.preventDefault();
+          }
+        };
+        document.addEventListener('keydown', keyNavHandler);
+        this.textContent = 'Desativar Teclado';
+        keyboardNavEnabled = true;
+      } else {
+        document.removeEventListener('keydown', keyNavHandler);
+        this.textContent = 'Navegação por Teclado';
+        keyboardNavEnabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
